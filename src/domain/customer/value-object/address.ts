@@ -10,6 +10,8 @@ export default class Address{
         this._number = number;
         this._city = city;
         this._zip = zip;
+
+        this.validate();
     }
 
     get street(): string{
