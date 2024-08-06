@@ -2,7 +2,7 @@
 
 Este repositório contém o exemplo de integração da `Clean Architecture` em um projeto originalmente desenvolvido utilizando somente o `Domain-Driven Design (DDD)` com `TypeScript`.
 
- - link para repositorio utilizando o [Domain-Driven Design - DDD](https://github.com/Lucassamuel97/ddd-patterns)
+ - link para repositório utilizando o [Domain-Driven Design - DDD](https://github.com/Lucassamuel97/ddd-patterns)
 
 # Referencial teórico
 - [domain-driven-design](https://fullcycle.com.br/domain-driven-design/)
