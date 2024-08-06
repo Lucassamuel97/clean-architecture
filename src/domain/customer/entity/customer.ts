@@ -1,9 +1,9 @@
 import EventDispatcherInterface from "../../@shared/event/event-dispatcher.interface";
 import { CustomerAddressChangedEvent } from "../event/customer-changed-address.event";
-import { CustomerCreatedEvent } from "../event/custumer-created.event";
+import { CustomerCreatedEvent } from "../event/customer-created.event";
 import Address from "../value-object/address";
 
-export default class Custumer{
+export default class Customer{
   private _id: string;
   private _name: string;
   private _address!: Address;
@@ -18,8 +18,8 @@ export default class Custumer{
     this.validate();
   }
 
-  static create(id: string, name: string, eventDispatcher: EventDispatcherInterface): Custumer {
-    const customer = new Custumer(id, name);
+  static create(id: string, name: string, eventDispatcher: EventDispatcherInterface): Customer {
+    const customer = new Customer(id, name);
     customer.eventDispatcher = eventDispatcher;
     customer.raiseEvent(new CustomerCreatedEvent(id, name));
     return customer;

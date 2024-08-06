@@ -1,12 +1,12 @@
 import Order from "../entity/order";
-import Custumer from "../../custumer/entity/customer";
+import Customer from "../../customer/entity/customer";
 import OrderItem from "../entity/order_item";
 import OrderService from "./order.service";
 
 describe("Order service unit tests", () => { 
 
     it("should place an order", () => {
-        const customer = new Custumer("c1", "Customer 1");
+        const customer = new Customer("c1", "Customer 1");
         const item = new OrderItem("i1", "Item 1", 10, "p1", 1);
         
         const order = OrderService.placeOrder(customer, [item]);

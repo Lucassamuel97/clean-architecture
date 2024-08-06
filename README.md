@@ -1,9 +1,12 @@
-# Exemplo de Aplicação DDD com TypeScript
+# Exemplo de desenvolvimento utilizando Clean Architecture+DDD com TypeScript
 
-Este repositório contém uma aplicação de exemplo que utiliza Domain-Driven Design (DDD) com TypeScript. Este guia fornece instruções para configurar o ambiente de testes usando Jest, SWC e SQLite em memória.
+Este repositório contém o exemplo de integração da `Clean Architecture` em um projeto originalmente desenvolvido utilizando somente o `Domain-Driven Design (DDD)` com `TypeScript`.
+
+ - link para repositorio utilizando o [Domain-Driven Design - DDD](https://github.com/Lucassamuel97/ddd-patterns)
 
 # Referencial teórico
-- [fullcycle](https://fullcycle.com.br/domain-driven-design/)
+- [domain-driven-design](https://fullcycle.com.br/domain-driven-design/)
+- [Clean Architecture vs DDD](https://fullcycle.com.br/clean-architecture-vs-ddd-e-outras-perguntas-2/)
 
 ## Requisitos
 
