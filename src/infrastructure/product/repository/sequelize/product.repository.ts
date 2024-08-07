@@ -14,7 +14,7 @@ export default class ProductRepository implements ProductRepositoryInterface {
     async delete(id: string): Promise<void> {
         await ProductModel.destroy({ where: { id } });
     }
-    
+
     async update(entity: Product): Promise<void> {
         await ProductModel.update({
             name: entity.name,
@@ -23,10 +23,23 @@ export default class ProductRepository implements ProductRepositoryInterface {
             where: { id: entity.id },
         });
     }
+
     async find(id: string): Promise<Product> {
-        const productModel = await ProductModel.findOne({ where: { id } });
-        return new Product(productModel.id, productModel.name, productModel.price);
+        let productModel;
+        try {
+            productModel = await ProductModel.findOne({
+                where: {
+                    id,
+                },
+                rejectOnEmpty: true,
+            });
+        } catch (error) {
+            throw new Error("Product not found");
+        }
+        const product = new Product(productModel.id, productModel.name, productModel.price);
+        return product;
     }
+
     async findAll(): Promise<Product[]> {
         const productModels = await ProductModel.findAll();
         return productModels.map((productModel) =>

@@ -22,13 +22,7 @@ describe("Unit Test find customer use case", () => {
     const customerRepository = MockRepository();
 
     const usecase = new FindCustomerUseCase(customerRepository);
-
-    const customer = new Customer("123", "John");
-    const address = new Address("Street", 123, "Zip", "City");
-    customer.changeAddress(address);
-
-    await customerRepository.create(customer);
-
+    
     const input = {
       id: "123",
     };
