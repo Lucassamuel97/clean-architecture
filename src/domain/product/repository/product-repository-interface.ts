@@ -6,4 +6,5 @@ export default interface ProductRepositoryInterface extends RepositoryInterface<
     // findByCategory(category: string): Promise<Product[]>;
     // findByPrice(price: number): Promise<Product[]>;
     // findByPriceRange(min: number, max: number): Promise<Product[]>;
+    delete(id: string): Promise<void>;
 }

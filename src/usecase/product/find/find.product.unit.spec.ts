@@ -9,6 +9,7 @@ const MockRepository = () => {
     findAll: jest.fn(),
     create: jest.fn(),
     update: jest.fn(),
+    delete: jest.fn(),
   };
 };
 describe("Unit Test find product use case", () => {
