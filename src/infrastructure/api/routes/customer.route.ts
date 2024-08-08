@@ -3,6 +3,7 @@ import CreateCustomerUseCase from "../../../usecase/customer/create/create.custo
 import CustomerRepository from "../../customer/repository/sequelize/customer.repository";
 import ListCustomerUseCase from "../../../usecase/customer/list/list.customer.usecase";
 import FindCustomerUseCase from "../../../usecase/customer/find/find.customer.usecase";
+import UpdateCustomerUseCase from "../../../usecase/customer/update/update.customer.usecase";
 
 export const customerRoute = express.Router();
 
@@ -26,7 +27,7 @@ customerRoute.post("/", async (req: Request, res: Response) => {
 });
 
 customerRoute.put("/:id", async (req: Request, res: Response) => {
-    const usecase = new CreateCustomerUseCase(new CustomerRepository());
+    const usecase = new UpdateCustomerUseCase(new CustomerRepository());
     try {
         const customerDto = {
             id: req.params.id,
