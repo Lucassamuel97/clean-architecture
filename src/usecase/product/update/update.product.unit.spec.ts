@@ -40,4 +40,16 @@ describe("Unit test for product update use case", () => {
     );
   });
 
+  it("should thrown an error when price is missing", async () => {
+    const productRepository = MockRepository();
+    const productUpdateUseCase = new UpdateProductUseCase(productRepository);
+    
+    input.name = "";
+    input.price = undefined;
+
+    await expect(productUpdateUseCase.execute(input)).rejects.toThrow(
+      "product: Name is required,product: Name is required"
+    );
+  });
+
 });
