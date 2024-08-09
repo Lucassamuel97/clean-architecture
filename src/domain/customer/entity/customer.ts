@@ -1,10 +1,11 @@
+import Entity from "../../@shared/entity/entity.abstract";
 import EventDispatcherInterface from "../../@shared/event/event-dispatcher.interface";
+import NotificationError from "../../@shared/notification/notification.error";
 import { CustomerAddressChangedEvent } from "../event/customer-changed-address.event";
 import { CustomerCreatedEvent } from "../event/customer-created.event";
 import Address from "../value-object/address";
 
-export default class Customer{
-  private _id: string;
+export default class Customer extends Entity {
   private _name: string;
   private _address!: Address;
   private _active: boolean = true;
@@ -12,10 +13,15 @@ export default class Customer{
 
   private eventDispatcher: EventDispatcherInterface;
 
-  constructor(id: string, name: string){
+  constructor(id: string, name: string) {
+    super();
     this._id = id;
     this._name = name;
     this.validate();
+
+    if(this.notification.hasErrors()){
+      throw new NotificationError(this.notification.getErrors());
+    }
   }
 
   static create(id: string, name: string, eventDispatcher: EventDispatcherInterface): Customer {
@@ -29,36 +35,38 @@ export default class Customer{
     this.eventDispatcher?.notify(event);
   }
 
-  get id(): string{
-    return this._id;
-  }
-
-  get name(): string{
+  get name(): string {
     return this._name;
   }
 
-  get rewardPoints(): number{
+  get rewardPoints(): number {
     return this._rewardPoints;
   }
 
-  isActive(): boolean{
+  isActive(): boolean {
     return this._active;
   }
 
   validate(){
-    if(this._id === ""){
-      throw new Error("Id is required");
+    if (this.id.length === 0) {
+      this.notification.addError({
+        context: "customer",
+        message: "Id is required",
+      });
     }
-    if(this._name === ""){
-      throw new Error("Name is required");
+    if (this._name.length === 0) {
+      this.notification.addError({
+        context: "customer",
+        message: "Name is required",
+      });
     }
   }
 
-  set name(name: string){
+  set name(name: string) {
     this._name = name;
   }
 
-  changeName(name: string){
+  changeName(name: string) {
     this._name = name;
     this.validate();
   }
@@ -66,20 +74,20 @@ export default class Customer{
   get Address(): Address {
     return this._address;
   }
-  
+
   changeAddress(address: Address) {
     this._address = address;
     this.raiseEvent(new CustomerAddressChangedEvent(this.id, this.name, address));
   }
 
-  activate(){
-    if(this._address === undefined){
+  activate() {
+    if (this._address === undefined) {
       throw new Error("Address is mandatory to activate a customer");
     }
     this._active = true;
   }
-  
-  deactivate(){
+
+  deactivate() {
     this._active = false;
   }
 
@@ -87,7 +95,7 @@ export default class Customer{
     this._address = address;
   }
 
-  addRewardPoints(points: number){
+  addRewardPoints(points: number) {
     this._rewardPoints += points;
   }
 }
