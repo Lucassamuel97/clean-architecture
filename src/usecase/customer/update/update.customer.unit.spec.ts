@@ -35,4 +35,15 @@ describe("Unit test for customer update use case", () => {
 
     expect(output).toEqual(input);
   });
+
+  it("should thrown an error when name is missing", async () => {
+    const customerRepository = MockRepository();
+    const customerUpdateUseCase = new UpdateCustomerUseCase(customerRepository);
+
+    input.name = "";
+
+    await expect(customerUpdateUseCase.execute(input)).rejects.toThrow(
+      "customer: Name is required"
+    );
+  });
 });
