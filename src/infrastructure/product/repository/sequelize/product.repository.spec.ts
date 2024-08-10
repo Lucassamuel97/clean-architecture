@@ -19,7 +19,9 @@ describe("Product Repository test", () => {
         await sequelize.sync();
     });
     afterEach(async () => {
-        await sequelize.close();
+        if (sequelize){
+            await sequelize.close();
+        }
     });
 
     it("should create a product", async () => {
