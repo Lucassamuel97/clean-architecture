@@ -4,25 +4,25 @@ Este repositório contém o exemplo de integração da `Clean Architecture` em u
 
  - link para repositório utilizando o [Domain-Driven Design - DDD](https://github.com/Lucassamuel97/ddd-patterns)
 
-## Entendendo a arquiterua
+## Entendendo a arquitetura
 
-<img alt="Onion Architecture" heigth="250"  src="https://bazaglia.com/img/onion-architecture.png">
+<img alt="Onion Architecture" heigth="200"  src="https://bazaglia.com/img/onion-architecture.png">
 
 ### 1 Domínio (Domain Layer, Entities)
 Pasta: domain/
-Responsabilidade: Contém as entidades, objetos de valor, interfaces de repositórios, serviços de domínio, e eventos. Esta camada representa o núcleo do sistema, com a lógica de negócio pura.
+Responsabilidade: Contém as entidades, objetos de valor, interfaces de repositórios, serviços de domínio e eventos. Está camada representa o núcleo do sistema, com a lógica de negócio pura.
 
 ### 2 Casos de Uso (Application Layer, Use Cases)
 Pasta: usecase/
-Responsabilidade: Contém os casos de uso ou serviços de aplicação, que coordenam a execução de operações de acordo com as regras de negócio. Esta camada orquestra a interação entre o domínio e a infraestrutura.
+Responsabilidade: Contém os casos de uso ou serviços de aplicação, que coordenam a execução de operações de acordo com as regras de negócio. Está camada orquestra a interação entre o domínio e a infraestrutura.
 
 ### 3 Infraestrutura (Infrastructure Layer)
 Pasta: infrastructure/
-Responsabilidade: Contém as implementações concretas das interfaces de repositórios, serviços de infraestrutura, adaptadores para frameworks externos, e detalhes de implementação específicos. Esta camada lida com a comunicação com o mundo externo, como bancos de dados, APIs, etc.
+Responsabilidade: Contém as implementações concretas das interfaces de repositórios, serviços de infraestrutura, adaptadores para frameworks externos, e detalhes de implementação específicos. Está camada lida com a comunicação com o mundo externo, como bancos de dados, APIs, etc.
 
 ### 4 Interface de Adapters (Interface Adapters Layer, Presenters, Controllers, Gateways)
 Pasta: infrastructure/api/
-Responsabilidade: Contém os adaptadores para interfaces externas, como APIs REST, XML, etc. Esta camada lida com a conversão de dados entre o formato interno do sistema e o formato esperado pelas interfaces externas.
+Responsabilidade: Contém os adaptadores para interfaces externas, como APIs REST, XML, etc. Está camada lida com a conversão de dados entre o formato interno do sistema e o formato esperado pelas interfaces externas.
 framework utilizado: express.js
 
 
